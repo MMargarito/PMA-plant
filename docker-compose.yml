@@ -1,0 +1,217 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database for User Service
+  postgres-users:
+    image: postgres:15-alpine
+    container_name: pma-postgres-users
+    environment:
+      POSTGRES_DB: users_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-users-data:/var/lib/postgresql/data
+    networks:
+      - pma-network
+
+  # PostgreSQL Database for Project Service
+  postgres-projects:
+    image: postgres:15-alpine
+    container_name: pma-postgres-projects
+    environment:
+      POSTGRES_DB: projects_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-projects-data:/var/lib/postgresql/data
+    networks:
+      - pma-network
+
+  # PostgreSQL Database for Task Service
+  postgres-tasks:
+    image: postgres:15-alpine
+    container_name: pma-postgres-tasks
+    environment:
+      POSTGRES_DB: tasks_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres-tasks-data:/var/lib/postgresql/data
+    networks:
+      - pma-network
+
+  # PostgreSQL Database for Notification Service
+  postgres-notifications:
+    image: postgres:15-alpine
+    container_name: pma-postgres-notifications
+    environment:
+      POSTGRES_DB: notifications_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres-notifications-data:/var/lib/postgresql/data
+    networks:
+      - pma-network
+
+  # Redis for caching and pub/sub
+  redis:
+    image: redis:7-alpine
+    container_name: pma-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - pma-network
+
+  # API Gateway
+  api-gateway:
+    build:
+      context: ./services/api-gateway
+      dockerfile: Dockerfile
+    container_name: pma-api-gateway
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: development
+      PORT: 4000
+      JWT_SECRET: your-super-secret-jwt-key-change-in-production
+      USER_SERVICE_URL: http://user-service:4001
+      PROJECT_SERVICE_URL: http://project-service:4002
+      TASK_SERVICE_URL: http://task-service:4003
+      NOTIFICATION_SERVICE_URL: http://notification-service:4004
+    depends_on:
+      - user-service
+      - project-service
+      - task-service
+      - notification-service
+    networks:
+      - pma-network
+
+  # User Service
+  user-service:
+    build:
+      context: ./services/user-service
+      dockerfile: Dockerfile
+    container_name: pma-user-service
+    ports:
+      - "4001:4001"
+    environment:
+      NODE_ENV: development
+      PORT: 4001
+      DB_HOST: postgres-users
+      DB_PORT: 5432
+      DB_NAME: users_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres123
+      JWT_SECRET: your-super-secret-jwt-key-change-in-production
+    depends_on:
+      - postgres-users
+    networks:
+      - pma-network
+
+  # Project Service
+  project-service:
+    build:
+      context: ./services/project-service
+      dockerfile: Dockerfile
+    container_name: pma-project-service
+    ports:
+      - "4002:4002"
+    environment:
+      NODE_ENV: development
+      PORT: 4002
+      DB_HOST: postgres-projects
+      DB_PORT: 5432
+      DB_NAME: projects_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres123
+    depends_on:
+      - postgres-projects
+    networks:
+      - pma-network
+
+  # Task Service
+  task-service:
+    build:
+      context: ./services/task-service
+      dockerfile: Dockerfile
+    container_name: pma-task-service
+    ports:
+      - "4003:4003"
+    environment:
+      NODE_ENV: development
+      PORT: 4003
+      DB_HOST: postgres-tasks
+      DB_PORT: 5432
+      DB_NAME: tasks_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres123
+    depends_on:
+      - postgres-tasks
+    networks:
+      - pma-network
+
+  # Notification Service
+  notification-service:
+    build:
+      context: ./services/notification-service
+      dockerfile: Dockerfile
+    container_name: pma-notification-service
+    ports:
+      - "4004:4004"
+    environment:
+      NODE_ENV: development
+      PORT: 4004
+      DB_HOST: postgres-notifications
+      DB_PORT: 5432
+      DB_NAME: notifications_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres123
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - postgres-notifications
+      - redis
+    networks:
+      - pma-network
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: pma-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_GRAPHQL_URL: http://localhost:4000/graphql
+      REACT_APP_WS_URL: http://localhost:4004
+      WATCHPACK_POLLING: "true"
+    depends_on:
+      - api-gateway
+      - notification-service
+    networks:
+      - pma-network
+    stdin_open: true
+    tty: true
+
+networks:
+  pma-network:
+    driver: bridge
+
+volumes:
+  postgres-users-data:
+  postgres-projects-data:
+  postgres-tasks-data:
+  postgres-notifications-data:
+  redis-data:
+

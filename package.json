@@ -1,0 +1,31 @@
+{
+  "name": "project-management-app",
+  "version": "1.0.0",
+  "description": "Microservices-based Project Management Application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:gateway\" \"npm run dev:user\" \"npm run dev:project\" \"npm run dev:task\" \"npm run dev:notification\"",
+    "dev:gateway": "cd services/api-gateway && npm run dev",
+    "dev:user": "cd services/user-service && npm run dev",
+    "dev:project": "cd services/project-service && npm run dev",
+    "dev:task": "cd services/task-service && npm run dev",
+    "dev:notification": "cd services/notification-service && npm run dev",
+    "install:all": "npm install && cd services/api-gateway && npm install && cd ../user-service && npm install && cd ../project-service && npm install && cd ../task-service && npm install && cd ../notification-service && npm install && cd ../../frontend && npm install",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "test": "echo \"Run tests for all services\" && exit 0"
+  },
+  "keywords": [
+    "microservices",
+    "project-management",
+    "nodejs",
+    "react",
+    "graphql"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
