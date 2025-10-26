@@ -2,67 +2,90 @@
 
 ## Color Palette
 
-### Primary Colors (Cyan/Teal)
+Inspired by the organic, interconnected nature of mycelium networks, our color palette features natural greens and teals that reflect growth, connection, and vitality.
+
+### Primary Colors (Green - Growth & Nature)
 ```
-#E0F7FA - primary-50  - Backgrounds, light sections
-#B2EBF2 - primary-100 - Hover states
-#80DEEA - primary-200 - Borders
-#4DD0E1 - primary-300 - Active states
-#26C6DA - primary-400 - Brand cyan (logo)
-#00BCD4 - primary-500 - Primary actions
-#00ACC1 - primary-600 - Hover on primary
-#0097A7 - primary-700 - Dark accents
-#00838F - primary-800 - Very dark
-#006064 - primary-900 - Darkest
+#E8F5E9 - primary-50  - Backgrounds, light sections
+#C8E6C9 - primary-100 - Hover states
+#A5D6A7 - primary-200 - Borders
+#81C784 - primary-300 - Active states
+#66BB6A - primary-400 - Accents
+#4CAF50 - primary-500 - Brand green (logo core)
+#43A047 - primary-600 - Hover on primary
+#388E3C - primary-700 - Dark accents
+#2E7D32 - primary-800 - Very dark
+#1B5E20 - primary-900 - Darkest
 ```
 
-### Secondary Colors (Blue)
+### Secondary Colors (Teal - Connection & Flow)
 ```
-#E3F2FD - secondary-50  - Light backgrounds
-#BBDEFB - secondary-100 - Subtle highlights
-#90CAF9 - secondary-200 - Borders
-#64B5F6 - secondary-300 - Active elements
-#42A5F5 - secondary-400 - Buttons
-#1E88E5 - secondary-500 - Brand blue (logo)
-#1976D2 - secondary-600 - Hover states
-#1565C0 - secondary-700 - Dark blue
-#0D47A1 - secondary-800 - Very dark
-#01579B - secondary-900 - Darkest
+#E0F2F1 - secondary-50  - Light backgrounds
+#B2DFDB - secondary-100 - Subtle highlights
+#80CBC4 - secondary-200 - Borders
+#4DB6AC - secondary-300 - Active elements
+#26A69A - secondary-400 - Buttons
+#009688 - secondary-500 - Brand teal
+#00897B - secondary-600 - Hover states (logo accent)
+#00796B - secondary-700 - Dark teal
+#00695C - secondary-800 - Very dark
+#004D40 - secondary-900 - Darkest
+```
+
+### Brand Colors
+```
+#A4D866 - myceili-lime   - Light accent (logo highlight)
+#4CAF50 - myceili-green  - Primary brand color
+#00897B - myceili-teal   - Secondary brand color
+#1B5E20 - myceili-dark   - Dark text/accents
+#E8F5E9 - myceili-light  - Light backgrounds
+#81C784 - myceili-accent - Interactive elements
 ```
 
 ### Brand Gradients
 ```css
-/* Main brand gradient */
-background: linear-gradient(135deg, #1E88E5 0%, #26C6DA 100%);
+/* Main brand gradient - Green to Teal */
+background: linear-gradient(135deg, #4CAF50 0%, #00897B 100%);
 
-/* Dark variant */
-background: linear-gradient(135deg, #0D47A1 0%, #00838F 100%);
+/* Dark variant - Rich, deep tones */
+background: linear-gradient(135deg, #2E7D32 0%, #00695C 100%);
+
+/* Light variant - Subtle, organic feel */
+background: linear-gradient(135deg, #81C784 0%, #4DB6AC 100%);
+
+/* Radial gradient - Network effect */
+background: radial-gradient(circle at top right, #4CAF50, #00897B);
 
 /* Tailwind classes */
-.bg-myceili-gradient
-.bg-myceili-gradient-dark
+.bg-myceili-gradient       /* Main green-to-teal */
+.bg-myceili-gradient-dark  /* Deep, rich variant */
+.bg-myceili-gradient-light /* Soft, organic variant */
+.bg-myceili-radial         /* Network effect */
 ```
 
 ### Usage Guidelines
 
-**Primary Cyan** - Use for:
-- Light backgrounds
-- Subtle highlights
-- Secondary buttons
-- Info messages
+**Primary Green** - Use for:
+- Growth indicators (progress bars, stats)
+- Success messages and confirmations
+- Primary call-to-action buttons
+- Active/selected states
+- Organic, natural elements
 
-**Secondary Blue** - Use for:
-- Primary actions
-- Links
-- Active states
-- Important elements
+**Secondary Teal** - Use for:
+- Connection indicators
+- Secondary actions
+- Links and navigation
+- Info messages
+- Complementary accents
 
 **Gradients** - Use for:
-- Primary buttons
-- Icons and logos
-- Feature highlights
-- Hero sections
-- User avatars
+- Primary buttons and CTAs
+- Logo and branding elements
+- Feature highlights and heroes
+- User avatars and initials
+- Progress indicators
+- Cards and panels (subtle)
 
 ## Typography
 
