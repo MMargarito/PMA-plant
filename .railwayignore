@@ -1,0 +1,24 @@
+# Don't deploy these to any Railway service
+node_modules/
+.git/
+.gitignore
+.env
+.env.local
+*.log
+.DS_Store
+README.md
+ARCHITECTURE.md
+CONTRIBUTING.md
+DESIGN_SYSTEM.md
+FRONTEND_FIX.md
+PROJECT_SUMMARY.md
+QUICKSTART.md
+REBRANDING_SUMMARY.md
+REBRANDING.md
+SECURITY.md
+frontend_elements/
+scripts/
+docker-compose.yml
+Dockerfile
+*.md
+
