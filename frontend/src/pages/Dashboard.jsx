@@ -55,25 +55,25 @@ const Dashboard = () => {
       name: 'Total Projects',
       value: totalProjects,
       icon: FolderIcon,
-      color: 'bg-blue-500',
+      color: 'bg-gradient-to-br from-secondary-500 to-secondary-600',
     },
     {
       name: 'Total Tasks',
       value: totalTasks,
       icon: CheckCircleIcon,
-      color: 'bg-green-500',
+      color: 'bg-gradient-to-br from-primary-400 to-primary-500',
     },
     {
       name: 'Completed Today',
       value: recentTasks.filter(t => t.status === 'done').length,
       icon: ChartBarIcon,
-      color: 'bg-purple-500',
+      color: 'bg-gradient-to-br from-green-400 to-teal-500',
     },
     {
       name: 'Pending',
       value: recentTasks.filter(t => t.status === 'todo').length,
       icon: ClockIcon,
-      color: 'bg-orange-500',
+      color: 'bg-gradient-to-br from-orange-400 to-amber-500',
     },
   ];
 

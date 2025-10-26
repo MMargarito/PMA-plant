@@ -1,6 +1,8 @@
-# Project Management Application (PMA)
+# Myceili - Project Management Platform
 
-A modern, scalable Project Management Application built with microservices architecture, featuring real-time collaboration, comprehensive task management, and advanced security measures.
+> *Connected project management that grows with your team*
+
+A modern, scalable project management platform built with microservices architecture, featuring real-time collaboration, comprehensive task management, and advanced security measures. Like a mycelium network, Myceili connects your team, projects, and tasks in a living, growing ecosystem.
 
 ## 🚀 Features
 

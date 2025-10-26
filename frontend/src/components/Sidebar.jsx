@@ -33,12 +33,43 @@ const Sidebar = () => {
     >
       {/* Logo */}
       <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
-        {sidebarOpen && (
-          <h1 className="text-xl font-bold text-primary-600">PMA</h1>
+        {sidebarOpen ? (
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-myceili-gradient rounded-lg flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="10" y1="18" x2="10" y2="4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="10" cy="4" r="2" fill="white"/>
+                <line x1="10" y1="8" x2="5" y2="8" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="5" cy="8" r="2" fill="white"/>
+                <line x1="10" y1="8" x2="15" y2="8" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="15" cy="8" r="2" fill="white"/>
+                <line x1="10" y1="14" x2="5" y2="14" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="5" cy="14" r="2" fill="white"/>
+                <line x1="10" y1="14" x2="15" y2="14" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="15" cy="14" r="2" fill="white"/>
+              </svg>
+            </div>
+            <h1 className="text-xl font-bold bg-myceili-gradient bg-clip-text text-transparent">Myceili</h1>
+          </div>
+        ) : (
+          <div className="w-8 h-8 bg-myceili-gradient rounded-lg flex items-center justify-center mx-auto">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="10" y1="18" x2="10" y2="4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              <circle cx="10" cy="4" r="2" fill="white"/>
+              <line x1="10" y1="8" x2="5" y2="8" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              <circle cx="5" cy="8" r="2" fill="white"/>
+              <line x1="10" y1="8" x2="15" y2="8" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              <circle cx="15" cy="8" r="2" fill="white"/>
+              <line x1="10" y1="14" x2="5" y2="14" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              <circle cx="5" cy="14" r="2" fill="white"/>
+              <line x1="10" y1="14" x2="15" y2="14" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              <circle cx="15" cy="14" r="2" fill="white"/>
+            </svg>
+          </div>
         )}
         <button
           onClick={() => dispatch(toggleSidebar())}
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="p-2 rounded-lg hover:bg-gray-50 transition-colors"
         >
           {sidebarOpen ? (
             <ChevronLeftIcon className="w-5 h-5 text-gray-600" />
@@ -55,10 +86,10 @@ const Sidebar = () => {
             key={item.name}
             to={item.to}
             className={({ isActive }) =>
-              `flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-colors relative ${
+              `flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-all relative ${
                 isActive
-                  ? 'bg-primary-50 text-primary-600'
-                  : 'text-gray-700 hover:bg-gray-100'
+                  ? 'bg-gradient-to-r from-myceili-light to-primary-50 text-secondary-700 shadow-sm'
+                  : 'text-gray-700 hover:bg-gray-50'
               }`
             }
           >

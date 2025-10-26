@@ -73,7 +73,7 @@ const Profile = () => {
       <div className="bg-white shadow rounded-lg p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex items-center space-x-6">
-            <div className="w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center">
+            <div className="w-24 h-24 bg-myceili-gradient rounded-full flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-3xl">
                 {profile?.first_name?.[0]}{profile?.last_name?.[0]}
               </span>
@@ -116,7 +116,7 @@ const Profile = () => {
             <button
               type="submit"
               disabled={updating}
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
+              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-myceili-gradient hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 disabled:opacity-50 transition-all"
             >
               {updating ? 'Saving...' : 'Save Changes'}
             </button>

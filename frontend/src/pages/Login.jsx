@@ -58,10 +58,27 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-500 to-primary-700 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-myceili-gradient py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-2xl p-8 space-y-8">
-        <div>
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">
+        <div className="flex flex-col items-center">
+          <div className="w-16 h-16 bg-myceili-gradient rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="16" y1="28" x2="16" y2="6" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <circle cx="16" cy="6" r="3" fill="white"/>
+              <line x1="16" y1="12" x2="8" y2="12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <circle cx="8" cy="12" r="3" fill="white"/>
+              <line x1="16" y1="12" x2="24" y2="12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <circle cx="24" cy="12" r="3" fill="white"/>
+              <line x1="16" y1="22" x2="8" y2="22" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <circle cx="8" cy="22" r="3" fill="white"/>
+              <line x1="16" y1="22" x2="24" y2="22" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <circle cx="24" cy="22" r="3" fill="white"/>
+            </svg>
+          </div>
+          <h1 className="text-3xl font-bold bg-myceili-gradient bg-clip-text text-transparent mb-2">
+            Myceili
+          </h1>
+          <h2 className="text-center text-2xl font-bold text-gray-900">
             Welcome Back
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
@@ -110,7 +127,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-myceili-gradient hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             >
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
@@ -121,7 +138,7 @@ const Login = () => {
               Don't have an account?{' '}
               <Link
                 to="/register"
-                className="font-medium text-primary-600 hover:text-primary-500"
+                className="font-medium bg-myceili-gradient bg-clip-text text-transparent hover:opacity-75 transition-opacity"
               >
                 Sign up
               </Link>

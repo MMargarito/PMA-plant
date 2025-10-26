@@ -59,8 +59,8 @@ const Navbar = () => {
 
         {/* User menu */}
         <Menu as="div" className="relative">
-          <Menu.Button className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
-            <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+          <Menu.Button className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+            <div className="w-8 h-8 bg-myceili-gradient rounded-full flex items-center justify-center shadow">
               <span className="text-white font-semibold text-sm">
                 {user?.first_name?.[0]}{user?.last_name?.[0]}
               </span>
